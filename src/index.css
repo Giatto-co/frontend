@@ -1,0 +1,77 @@
+/* layout */
+:root {
+  --primary: #33F2FF;
+  --error: #e7195a;
+  --dark-neutral: #333;
+}
+body {
+  background: #f1f1f1;
+  margin: 0;
+  font-family: "Poppins";
+}
+header {
+  background: #fff;
+}
+header .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header a {
+  color: #333;
+  text-decoration: none;
+}
+.pages{
+  max-width: 1400px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+/* colors */
+.white {
+  color: #fff;
+}
+
+.dark-neutral {
+  color: var(--dark-neutral);
+}
+
+.mr--social-btns {
+  margin-right: 5px;
+}
+
+/* font-sizes */
+.logo-text {
+  font-size: 3rem;
+}
+
+.sm-text {
+  font-size: 0.5rem;
+}
+
+/* fontweight */
+.ex-bold {
+  font-weight: 900;
+}
+
+/* cursor */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* imput fields */
+input:-internal-autofill-selected {
+  background: transparent !important;
+}
+
+/* Button */
+.Button {
+  color: var(--dark-neutral);
+}
+
+.Button:focus {
+  background-color: var(--primary);
+}
