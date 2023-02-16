@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import Link from "@mui/material/Link";
@@ -35,15 +36,20 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SocialsLogin() {
+  const navigate = useNavigate();
+
+  const goHome = () => navigate('/home');
+
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid
           item
-          xs={4}
+          xs={12}
           sm={8}
           md={5}
+          lg={6}
           component={Paper}
           elevation={6}
           sx={{ background: 'linear-gradient(180deg, #00BFFF, #7FFFD4)' }}
@@ -58,7 +64,7 @@ export default function SocialsLogin() {
               alignItems: "center",
             }}
           >
-            <h1 className="logo-text white">giatto</h1>
+            <h1 className="logo-text white cursor-pointer" onClick={goHome}>giatto</h1>
             <Typography
               component="h4"
               className="white"
@@ -113,7 +119,7 @@ export default function SocialsLogin() {
 
             <Grid item sx={{ mt: 3, mb: 2 }}>
               <Link href="/signup/socials" variant="body2" underline="none" color="#333">
-                Don't have an account? Sign Up
+                Don't have an account? <strong>Sign Up</strong>
               </Link>
             </Grid>
 
@@ -129,9 +135,10 @@ export default function SocialsLogin() {
 
         <Grid
           item
-          xs={8}
-          sm={4}
-          md={7}
+           // xs={8}
+           sm={4}
+           md={7}
+           lg={6} 
           sx={{
             backgroundImage: "url(https://source.unsplash.com/random)",
             // backgroundImage:

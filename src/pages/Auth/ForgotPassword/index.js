@@ -3,26 +3,15 @@ import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import {
-  FormControl,
-  IconButton,
-  Input,
-  InputAdornment,
-  InputLabel,
-  Stack,
-} from "@mui/material";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 // import sketchImg from '../../assets/visualhunter-70349147e8-removebg-preview 1.png';
 import { MdOutlineArrowBackIos } from "react-icons/md";
+import { Divider } from "@mui/material";
 
 function Copyright(props) {
   return (
@@ -44,18 +33,11 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function Login() {
-  const [showPassword, setShowPassword] = React.useState(false);
+export default function ForgotPassword() {
   const navigate = useNavigate();
 
   const goBack = () => navigate(-1);
-  const goHome = () => navigate("/home");
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  const goHome = () => navigate('/home');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -72,14 +54,12 @@ export default function Login() {
         <CssBaseline />
         <Grid
           item
-          xs={12}
+          xs={4}
           sm={8}
           md={5}
           component={Paper}
           elevation={6}
-          sx={{
-            background: "linear-gradient(45deg, #FE6B8B 30%, #7FFFD4 90%)",
-          }}
+          sx={{ background: "linear-gradient(180deg, #00BFFF, #7FFFD4)" }}
           square
         >
           <Grid
@@ -100,23 +80,29 @@ export default function Login() {
 
           <Box
             sx={{
-              my: 8,
-              mx: 4,
+              //   m: 2,
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
             }}
           >
-            <h1 className="white logo-text cursor-pointer" onClick={goHome}>
-              giatto
-            </h1>
+            <h1 className="white logo-text cursor-pointer" onClick={goHome}>giatto</h1>
+            <Typography
+              component="h2"
+              textAlign="center"
+              className="white sub-head-text"
+              sx={{ fontWeight: "bold", fontSize: "1.5rem" }}
+            >
+              Recover your password
+            </Typography>
             <Typography
               component="h3"
               textAlign="center"
               className="white"
-              sx={{ fontWeight: "bold" }}
+              sx={{ mx: 8, my: 2 }}
             >
-              Log in
+              Please enter your registration mail to recover your password. You
+              will receive a password reset link via that email.
             </Typography>
             <Box
               component="form"
@@ -132,7 +118,6 @@ export default function Login() {
                 id="standard-email-input"
                 label="Email Address"
                 name="email"
-                // autoComplete="email"
                 autoFocus
                 variant="standard"
                 sx={{
@@ -141,82 +126,41 @@ export default function Login() {
                   },
                 }}
               />
-              <FormControl
-                variant="standard"
-                margin="normal"
-                required
-                fullWidth
-              >
-                <InputLabel htmlFor="standard-adornment-password">
-                  Password
-                </InputLabel>
-                <Input
-                  id="standard-adornment-password"
-                  type={showPassword ? "text" : "password"}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                      >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                />
-              </FormControl>
-              <FormControlLabel
-                control={
-                  <Checkbox value="remember" style={{ color: "#333" }}
-                   />
-                }
-                sx={{marginTop:"1em"}}
-                label="Remember me"
-              />
+
               <Button
                 type="submit"
                 fullWidth
                 variant="outlined"
                 sx={{ mt: 3, mb: 2, color: "#333", borderColor: "#333" }}
               >
-                Log in
+                Send link
               </Button>
-              <Stack
-                direction={{ xs: "column", sm: "row", md: "row" }}
-                spacing={{ xs: 1, sm: 2, md: 4 }}
-                justifyContent="space-between"
-                alignItems="center"
-                mt={2}
-              >
-                <Link
-                  href="/reset-password"
-                  variant="body2"
-                  underline="none"
-                  color="#333"
-                  fontWeight="lg"
-                fullWidth
-
+              <hr
+                style={{
+                  marginTop: "18em",
+                  color: "#fff",
+                  width: "30em",
+                  height: "1px",
+                  backgroundColor: "#fff",
+                  border: "0.8px solid #fff",
+                }}
+              />
+              <Grid item>
+                <Typography
+                  color="#fff"
+                  margin={1}
+                  textAlign="center"
+                  fontWeight="bold"
                 >
-                  Forgot password?
-                </Link>
-                <Link
-                  href="/signup/socials"
-                  variant="body2"
-                  underline="none"
-                  color="#333"
-                fullWidth
-                >
-                  Don't have an account? <strong>Sign Up</strong>
-                </Link>
-              </Stack>
-              <Copyright sx={{ mt: 24 }} />
+                  ...connecting African creators to the world
+                </Typography>
+              </Grid>
             </Box>
           </Box>
         </Grid>
         <Grid
           item
-          // xs={8}
+          xs={8}
           sm={4}
           md={7}
           sx={{

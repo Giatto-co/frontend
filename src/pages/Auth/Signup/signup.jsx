@@ -22,6 +22,8 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 // import sketchImg from '../../assets/visualhunter-70349147e8-removebg-preview 1.png';
 import { MdOutlineArrowBackIos } from "react-icons/md";
+import { useSignup } from "../../../hooks/useSignup";
+import { border, Stack } from "@mui/system";
 
 function Copyright(props) {
   return (
@@ -44,17 +46,37 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Signup() {
+  const { signup, isLoading, error } = useSignup();
   const [state, setState] = React.useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    username: "",
     email: "",
+    role: "",
     password: "",
+    confirmpassword: "",
   });
-  const { email, password } = state;
+  const {
+    firstName,
+    lastName,
+    phone,
+    username,
+    email,
+    role,
+    password,
+    confirmpassword,
+  } = state;
   const [showPassword, setShowPassword] = React.useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
   const navigate = useNavigate();
 
   const goBack = () => navigate(-1);
+  const goHome = () => navigate("/home");
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleClickShowConfirmPassword = () =>
+    setShowConfirmPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -69,11 +91,18 @@ export default function Signup() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+
+    // signup(
+    //   firstName,
+    //   lastName,
+    //   phone,
+    //   username,
+    //   email,
+    //   role,
+    //   password,
+    //   confirmpassword,
+    // );
+    signup();
   };
 
   return (
@@ -82,9 +111,9 @@ export default function Signup() {
         <CssBaseline />
         <Grid
           item
-          xs={4}
+          xs={12}
           sm={8}
-          md={5}
+          md={6}
           component={Paper}
           elevation={6}
           sx={{
@@ -93,11 +122,9 @@ export default function Signup() {
           square
         >
           <Grid
-            item
             container
-            spacing={2}
             alignItems="center"
-            margin={3}
+            margin={2}
             xs={2}
             className="cursor-pointer"
             onClick={goBack}
@@ -110,132 +137,223 @@ export default function Signup() {
 
           <Box
             sx={{
-              my: 8,
-              mx: 4,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              padding: "1rem",
+              width: "100%",
             }}
           >
-            <h1 className="logo-text white">giatto</h1>
-            <Typography
-              component="h3"
-              textAlign="center"
-              className="white"
-              sx={{ fontWeight: "bold" }}
-            >
-              Create an Account
-            </Typography>
+            <Stack>
+              <h1
+                className="logo-text white cursor-pointer"
+                style={{ marginTop: "-0.3em", textAlign: "center" }}
+                onClick={goHome}
+              >
+                giatto
+              </h1>
+
+              <Typography
+                component="h3"
+                textAlign="center"
+                // mt={0}
+                className="white"
+                sx={{ fontWeight: "bold" }}
+              >
+                Create an Account
+              </Typography>
+            </Stack>
+
             <Box
               component="form"
               noValidate
               onSubmit={handleSubmit}
-              sx={{ mt: 1 }}
+              sx={{ flexGrow: 1 }}
               autoComplete="off"
             >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="standard-email-input"
-                label="Email Address"
-                name="email"
-                onChange={onChange}
-                value={email}
-                // autoComplete="email"
-                autoFocus
-                variant="standard"
-                sx={{
-                  "& .MuiInputBase-input": {
-                    background: "transparent",
-                  },
-                }}
-              />
-              <FormControl
-                variant="standard"
-                margin="normal"
-                required
-                fullWidth
-              >
-                <InputLabel htmlFor="standard-adornment-password">
-                  Password
-                </InputLabel>
-                <Input
-                  id="standard-adornment-password"
-                  onChange={onChange}
-                  name="password"
-                  value={password}
-                  type={showPassword ? "text" : "password"}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                      >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
+              <Stack spacing={2}>
+                <Stack
+                  direction={{ xs: "column", sm: "row", md: "row" }}
+                  spacing={{ xs: 1, sm: 2, md: 4 }}
+                >
+                  <TextField
+                    label="Firstname"
+                    variant="standard"
+                    name="firstName"
+                    value={firstName}
+                    onChange={onChange}
+                    required
+                    fullWidth
+                  />
+                  <TextField
+                    label="Lastname"
+                    variant="standard"
+                    name="lastName"
+                    value={lastName}
+                    onChange={onChange}
+                    required
+                    fullWidth
+                  />
+                </Stack>
+                <Stack
+                  direction={{ xs: "column", sm: "row", md:"row" }}
+                  spacing={{ xs: 1, sm: 2, md: 4 }}
+                >
+                  <TextField
+                    label="Phone Number"
+                    variant="standard"
+                    name="phone"
+                    value={phone}
+                    onChange={onChange}
+                    required
+                    fullWidth
+                  />
+                  <TextField
+                    label="Username"
+                    variant="standard"
+                    name="username"
+                    value={username}
+                    onChange={onChange}
+                    required
+                    fullWidth
+                  />
+                </Stack>
+                <Stack
+                  direction={{ xs: "column", sm: "row", md:"row" }}
+                  spacing={{ xs: 1, sm: 2, md: 4 }}
+                >
+                  <TextField
+                    label="Role"
+                    variant="standard"
+                    name="role"
+                    value={role}
+                    onChange={onChange}
+                    required
+                    fullWidth
+                  />
+                  <TextField
+                    label="Email Address"
+                    variant="standard"
+                    name="email"
+                    value={email}
+                    onChange={onChange}
+                    required
+                    fullWidth
+                  />
+                </Stack>
+                <Stack
+                  direction={{ xs: "column", sm: "row", md:"row" }}
+                  spacing={{ xs: 1, sm: 2, md: 4 }}
+                >
+                  <FormControl variant="standard" required fullWidth>
+                    <InputLabel htmlFor="standard-adornment-password">
+                      Password
+                    </InputLabel>
+                    <Input
+                      id="standard-adornment-password"
+                      onChange={onChange}
+                      name="password"
+                      value={password}
+                      type={showPassword ? "text" : "password"}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                    />
+                  </FormControl>
+                  <FormControl variant="standard" required fullWidth>
+                    <InputLabel htmlFor="standard-password">
+                      Confirm Password
+                    </InputLabel>
+                    <Input
+                      id="standard-password"
+                      onChange={onChange}
+                      name="confirmpassword"
+                      value={confirmpassword}
+                      type={showConfirmPassword ? "text" : "password"}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowConfirmPassword}
+                            onMouseDown={handleMouseDownPassword}
+                          >
+                            {showConfirmPassword ? (
+                              <VisibilityOff />
+                            ) : (
+                              <Visibility />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                    />
+                  </FormControl>
+                </Stack>
+              </Stack>
+
+              <Stack mt={2}>
+                <FormControlLabel
+                  control={
+                    <Checkbox value="remember" style={{ color: "#333" }} />
                   }
+                  label="Remember me"
                 />
-              </FormControl>
-              <FormControlLabel
-                control={<Checkbox value="remember" style={{color:"#333"}} />}
-                label="Remember me"
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="outlined"
-                sx={{ mt: 3, mb: 2, color: "#333", borderColor: "#333" }}
-              >
-                Sign up
-              </Button>
-              <Grid item>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="outlined"
+                  sx={{ mt: 3, mb: 2, color: "#333", borderColor: "#333" }}
+                  // disabled={isLoading}
+                >
+                  Sign up
+                </Button>
+                {error && <div className="error">{error}</div>}
+              </Stack>
+
+              <Stack>
                 <Typography
                   variant="body2"
                   textAlign="center"
                   marginX={12}
-                  marginBottom={3}
+                  marginY={3}
                 >
                   By clicking the “Sign up” button, you are creating a giatto's
                   account and therefore you agree to giatto Company’s{" "}
-                  <strong>Terms of Use </strong> and{" "}
-                  <strong>Privacy Policy</strong>.
+                  <strong className="cursor-pointer underline-hover">
+                    Terms of Use{" "}
+                  </strong>{" "}
+                  and{" "}
+                  <strong className="cursor-pointer underline-hover">
+                    Privacy Policy
+                  </strong>
+                  .
                 </Typography>
-              </Grid>
-              <Grid container>
-                <Grid item xs>
-                  <Link
-                    href="#"
-                    variant="body2"
-                    underline="none"
-                    color="#333"
-                    fontWeight="lg"
-                  >
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link
-                    href="/login/socials"
-                    variant="body2"
-                    underline="none"
-                    color="#333"
-                  >
-                    Already have an account? Log in
-                  </Link>
-                </Grid>
-              </Grid>
-              <Copyright sx={{ mt: 14 }} />
+
+                <Link
+                  href="/login/socials"
+                  variant="body2"
+                  underline="none"
+                  color="#333"
+                  sx={{ textAlign: "center" }}
+                  margin={5}
+                >
+                  Already have an account? <strong>Log in</strong>
+                </Link>
+              </Stack>
+              <Copyright />
             </Box>
           </Box>
         </Grid>
+
         <Grid
           item
-          xs={8}
+          // xs={8}
           sm={4}
-          md={7}
+          md={6}
           sx={{
             backgroundImage: "url(https://source.unsplash.com/random)",
             // backgroundImage:
