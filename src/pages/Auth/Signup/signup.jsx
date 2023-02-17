@@ -321,7 +321,7 @@ export default function Signup() {
                   marginX={12}
                   marginY={3}
                 >
-                  By clicking the “Sign up” button, you are creating a giatto's
+                  By clicking the “Sign up” button, you are creating a giatto
                   account and therefore you agree to giatto Company’s{" "}
                   <strong className="cursor-pointer underline-hover">
                     Terms of Use{" "}
