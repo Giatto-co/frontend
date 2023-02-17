@@ -23,7 +23,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 // import sketchImg from '../../assets/visualhunter-70349147e8-removebg-preview 1.png';
 import { MdOutlineArrowBackIos } from "react-icons/md";
 import { useSignup } from "../../../hooks/useSignup";
-import { border, Stack } from "@mui/system";
+import { Stack } from "@mui/system";
 
 function Copyright(props) {
   return (
