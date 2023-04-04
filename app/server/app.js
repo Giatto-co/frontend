@@ -1,8 +1,8 @@
 //require packages
-// require('dotenv').config();
+require('dotenv').config();
 const express = require('express');
-// const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
+const resourcesRoutes = require("./routes/resources")
 
 //startup express app
 const app = express();
@@ -18,6 +18,7 @@ app.use((req, res, next) => {
 
 //route to request
 app.use('/api/v1/user', userRoutes);
+app.use('/api/v1/resources', resourcesRoutes);
 
 //listen for a request 
 app.listen(port, () => {

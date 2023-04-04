@@ -7,7 +7,7 @@ const loginUser = async (req, res) => {
     const config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://0d1e-102-88-62-147.ngrok.io/api/v1/users/login",
+      url: `${process.env.BASE_URL}/api/v1/users/login`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -34,7 +34,7 @@ const signupUser = async (req, res) => {
     const config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://0d1e-102-88-62-147.ngrok.io/api/v1/users/register",
+      url: `${process.env.BASE_URL}/api/v1/users/register`,
       headers: {
         "Content-Type": "application/json",
       },

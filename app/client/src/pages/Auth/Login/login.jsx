@@ -12,6 +12,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import {
+  CircularProgress,
   FormControl,
   IconButton,
   Input,
@@ -24,6 +25,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 // import sketchImg from '../../assets/visualhunter-70349147e8-removebg-preview 1.png';
 import { MdOutlineArrowBackIos } from "react-icons/md";
 import { useLogin } from "../../../hooks/useLogin";
+import { grey } from "@mui/material/colors";
 
 function Copyright(props) {
   return (
@@ -46,7 +48,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login() {
-  const { login, isLoading, error } = useLogin();
+  const { login, isLoading } = useLogin();
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -73,7 +75,7 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+
     login(email, password);
   };
 
@@ -184,20 +186,45 @@ export default function Login() {
               </FormControl>
               <FormControlLabel
                 control={
-                  <Checkbox value="remember" style={{ color: "#333" }}
-                   />
+                  <Checkbox value="remember" style={{ color: "#333" }} />
                 }
-                sx={{marginTop:"1em"}}
+                sx={{ marginTop: "1em" }}
                 label="Remember me"
               />
-              <Button
-                type="submit"
-                fullWidth
-                variant="outlined"
-                sx={{ mt: 3, mb: 2, color: "#333", borderColor: "#333" }}
-              >
-                Log in
-              </Button>
+              <Box sx={{ m: 1, position: "relative" }}>
+                {!isLoading ? (
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="outlined"
+                    sx={{ mt: 3, mb: 2, color: "#333", borderColor: "#333" }}
+                    disabled={isLoading}
+                  >
+                    Log in
+                  </Button>
+                ) : (
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="outlined"
+                    sx={{ mt: 3, mb: 2, color: "#333", borderColor: "#333" }}
+                    disabled={isLoading}
+                  >
+                    Log in
+                    <CircularProgress
+                      size={24}
+                      sx={{
+                        color: grey[700],
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        marginTop: "-12px",
+                        marginLeft: "-12px",
+                      }}
+                    />
+                  </Button>
+                )}
+              </Box>
               <Stack
                 direction={{ xs: "column", sm: "row", md: "row" }}
                 spacing={{ xs: 1, sm: 2, md: 4 }}

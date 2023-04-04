@@ -5,7 +5,7 @@ import {
   BsTwitter,
 } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
-import { MobileFooterBlock } from "./mobile-footer-block";
+import { CollapsibleBlock } from "./CollapsibleBlock";
 
 const Footer = () => {
   return (
@@ -54,12 +54,12 @@ const Footer = () => {
           </div>
           <div>
             <h4>SOCIAL MEDIA</h4>
-            <div className="sm-icons">
-              <BsFacebook size={20} color="#1877F2" />
-              <BsInstagram size={20} />
-              <BsTwitter size={20} color="#1da1f2" />
-              <FcGoogle size={20} />
-              <BsPinterest size={20} color="#f00" />
+            <div className="sm-icons cursor-pointer">
+              <BsFacebook size={20} color="#1877F2" className="zoom-hover" />
+              <BsInstagram size={20} className="zoom-hover" />
+              <BsTwitter size={20} color="#1da1f2" className="zoom-hover" />
+              <FcGoogle size={20} className="zoom-hover" />
+              <BsPinterest size={20} color="#f00" className="zoom-hover" />
             </div>
           </div>
         </div>
@@ -71,7 +71,7 @@ const Footer = () => {
         </div>
 
         <div className="mobile-footer">
-          <MobileFooterBlock
+          <CollapsibleBlock
             header={"CONTENT"}
             content={[
               "Calendar of festivities",
@@ -81,7 +81,7 @@ const Footer = () => {
               "Blog",
             ]}
           />
-          <MobileFooterBlock
+          <CollapsibleBlock
             header={"INFORMATION"}
             content={[
               "Pricing",
@@ -91,7 +91,7 @@ const Footer = () => {
               "Sell your content",
             ]}
           />
-          <MobileFooterBlock
+          <CollapsibleBlock
             header={"LEGAL"}
             content={[
               "Terms and conditions",
@@ -102,10 +102,10 @@ const Footer = () => {
               "Cookies settings",
             ]}
           />
-          <MobileFooterBlock header={"SUPPORT"} content={["FAQ", "Contact"]} />
+          <CollapsibleBlock header={"SUPPORT"} content={["FAQ", "Contact"]} />
           <div className="mobile-sm">
             <h4>SOCIAL MEDIA</h4>
-            <div className="sm-icons">
+            <div className="sm-icons cursor-pointer">
               <BsFacebook size={22} color="#1877F2" />
               <BsInstagram size={22} />
               <BsTwitter size={22} color="#1da1f2" />
@@ -118,6 +118,16 @@ const Footer = () => {
           </p>
         </div>
       </footer>
+      <div className="footer-label flex-container">
+            <p className="cursor-pointer">Giatto's projects</p>
+            <ul>
+              <li>Giatto</li>
+              <li>Main Icon</li>
+              <li>Flat Icon</li>
+              <li>MVP</li>
+              <li>Sides</li>
+            </ul>
+        </div>
     </>
   );
 };

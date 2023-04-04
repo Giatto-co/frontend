@@ -12,6 +12,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import {
+  CircularProgress,
   FormControl,
   IconButton,
   Input,
@@ -20,10 +21,10 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-// import sketchImg from '../../assets/visualhunter-70349147e8-removebg-preview 1.png';
 import { MdOutlineArrowBackIos } from "react-icons/md";
 import { useSignup } from "../../../hooks/useSignup";
 import { Stack } from "@mui/system";
+import { grey } from "@mui/material/colors";
 
 function Copyright(props) {
   return (
@@ -46,14 +47,13 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Signup() {
-  const { signup, isLoading, error } = useSignup();
+  const { signup, isLoading } = useSignup();
   const [state, setState] = useState({
     firstName: "",
     lastName: "",
     phone: "",
     username: "",
     email: "",
-    role: "",
     password: "",
     confirmPassword: "",
   });
@@ -63,7 +63,6 @@ export default function Signup() {
     phone,
     username,
     email,
-    role,
     password,
     confirmPassword,
   } = state;
@@ -98,11 +97,9 @@ export default function Signup() {
       phone,
       username,
       email,
-      role,
       password,
       confirmPassword,
     );
-    // signup();
   };
 
   return (
@@ -221,15 +218,6 @@ export default function Signup() {
                   spacing={{ xs: 1, sm: 2, md: 4 }}
                 >
                   <TextField
-                    label="Role"
-                    variant="standard"
-                    name="role"
-                    value={role}
-                    onChange={onChange}
-                    required
-                    fullWidth
-                  />
-                  <TextField
                     label="Email Address"
                     variant="standard"
                     name="email"
@@ -303,16 +291,40 @@ export default function Signup() {
                   }
                   label="Remember me"
                 />
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="outlined"
-                  sx={{ mt: 3, mb: 2, color: "#333", borderColor: "#333" }}
-                  // disabled={isLoading}
-                >
-                  Sign up
-                </Button>
-                {error && <div className="error">{error}</div>}
+                <Box sx={{ m: 1, position: "relative" }}>
+                {!isLoading ? (
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="outlined"
+                    sx={{ mt: 3, mb: 2, color: "#333", borderColor: "#333" }}
+                    disabled={isLoading}
+                  >
+                    Log in
+                  </Button>
+                ) : (
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="outlined"
+                    sx={{ mt: 3, mb: 2, color: "#333", borderColor: "#333" }}
+                    disabled={isLoading}
+                  >
+                    Sign up
+                    <CircularProgress
+                      size={24}
+                      sx={{
+                        color: grey[700],
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        marginTop: "-12px",
+                        marginLeft: "-12px",
+                      }}
+                    />
+                  </Button>
+                )}
+              </Box>
               </Stack>
 
               <Stack>

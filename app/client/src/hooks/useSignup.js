@@ -5,8 +5,7 @@ import { useAuthContext } from "./useAuthContext";
 import { useNavigate } from "react-router-dom";
 
 export const useSignup = () => {
-  const [isLoading, setIsLoading] = useState(null);
-  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const { dispatch } = useAuthContext();
   const navigate = useNavigate();
 
@@ -16,12 +15,10 @@ export const useSignup = () => {
     phone,
     username,
     email,
-    role,
     password,
     confirmPassword
   ) => {
     setIsLoading(true);
-    setError(null);
 
     let reqBody = {
       firstName,
@@ -30,7 +27,6 @@ export const useSignup = () => {
       phone,
       username,
       password,
-      role: [role],
       confirmPassword,
     };
     console.log("Reqbody>>>>>>", reqBody);
@@ -66,7 +62,7 @@ export const useSignup = () => {
             hideProgressBar: true,
             autoClose: 3000,
           });
-          navigate('/');
+          navigate('/home');
         }
       })
       .catch(function (error) {
@@ -85,5 +81,5 @@ export const useSignup = () => {
       });
   };
 
-  return { signup, isLoading, error };
+  return { signup, isLoading };
 };

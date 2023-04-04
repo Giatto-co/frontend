@@ -7,13 +7,11 @@ import { useAuthContext } from "./useAuthContext";
 
 export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(null);
-  const [error, setError] = useState(null);
   const { dispatch } = useAuthContext();
   const navigate = useNavigate();
 
   const login = async (email, password) => {
     setIsLoading(true);
-    setError(null);
 
     const config = {
       method: "post",
@@ -43,7 +41,7 @@ export const useLogin = () => {
             hideProgressBar: true,
             autoClose: 3000,
           });
-          navigate("/");
+          navigate("/home");
         }
       })
       .catch(function (error) {
@@ -65,5 +63,5 @@ export const useLogin = () => {
       });
   };
 
-  return { login, isLoading, error };
+  return { login, isLoading };
 };
