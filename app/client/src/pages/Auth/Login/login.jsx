@@ -242,7 +242,7 @@ export default function Login() {
                   Forgot password?
                 </Link>
                 <Link
-                  href="/signup/socials"
+                  href="/signup"
                   variant="body2"
                   underline="none"
                   color="#333"

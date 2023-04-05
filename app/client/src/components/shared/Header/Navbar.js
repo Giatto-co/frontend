@@ -53,8 +53,8 @@ const Navbar = () => {
                 </div>
 
                 <div className="links">
-                  <Link to="/login/socials">Login</Link>
-                  <Link className="btn signup-btn" to="/signup/socials">
+                  <Link to="/login">Login</Link>
+                  <Link className="btn signup-btn" to="/signup">
                     Signup
                   </Link>
                   <BsStarFill size={18} className="star-icon" />
@@ -148,7 +148,7 @@ const Navbar = () => {
                   </li>
                   <li>
                     <Link
-                      to="/login/socials"
+                      to="/login"
                       className="btn mobile-nav--links login-btn--mobile"
                     >
                       Login
@@ -156,7 +156,7 @@ const Navbar = () => {
                   </li>
                   <li>
                     <Link
-                      to="/signup/socials"
+                      to="/signup"
                       className="btn mobile-nav--links signup-btn--mobile"
                     >
                       Signup

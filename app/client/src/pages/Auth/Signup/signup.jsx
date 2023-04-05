@@ -300,7 +300,7 @@ export default function Signup() {
                     sx={{ mt: 3, mb: 2, color: "#333", borderColor: "#333" }}
                     disabled={isLoading}
                   >
-                    Log in
+                    Sign up
                   </Button>
                 ) : (
                   <Button
@@ -347,7 +347,7 @@ export default function Signup() {
                 </Typography>
 
                 <Link
-                  href="/login/socials"
+                  href="/login"
                   variant="body2"
                   underline="none"
                   color="#333"
