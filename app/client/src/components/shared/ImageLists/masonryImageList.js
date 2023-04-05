@@ -20,7 +20,7 @@ const MasonryImageList = ({ itemData }) => {
     <>
       {itemData.map((img, i) => {
         return (
-          <div key={i} className="zoom-hover image-overlay">
+          <div key={i} className="zoom-hover">
             <div className="image-list">
               <div className="img-list-full-col">
                 <img
