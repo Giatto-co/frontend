@@ -19,8 +19,8 @@ const CategoryHeader = () => {
       )}
       {!user && (
         <div className="links">
-          <Link to="/login/socials" className="category-login">Login</Link>
-          <Link className="btn signup-btn" to="/signup/socials">
+          <Link to="/login" className="category-login">Login</Link>
+          <Link className="btn signup-btn" to="/signup">
             Signup
           </Link>
         </div>
