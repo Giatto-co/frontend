@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaShareAlt, FaSave } from "react-icons/fa";
 import { Grid, Popover, Typography } from "@mui/material";
 
-const MasonryImageList = ({ itemData }) => {
+const MasonryImageList = ({ collData, collName }) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const navigate = useNavigate();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -18,23 +20,22 @@ const MasonryImageList = ({ itemData }) => {
   const id = open ? "simple-popover" : undefined;
   return (
     <>
-      {itemData.map((img, i) => {
+      {collData.map((img, i) => {
         return (
-          <div key={i} className="zoom-hover">
+          <div
+            key={i}
+            className="zoom-hover"
+            onClick={() =>
+              navigate(`/${img.title.toLowerCase()}-collections/${img.total}`)
+            }
+          >
             <div className="image-list">
               <div className="img-list-full-col">
-                <img
-                  src={img.imgOne}
-                  alt=""
-                />
+                <img src={img.imgOne} alt="" />
               </div>
               <div className="img-list-half-col">
                 <div className="masonry-sm-img">
-                  <img
-                    src={img.imgTwo}
-                    alt=""
-                    className="img-list-half-top"
-                  />
+                  <img src={img.imgTwo} alt="" className="img-list-half-top" />
                 </div>
                 <div className="masonry-sm-img">
                   <img
@@ -68,16 +69,20 @@ const MasonryImageList = ({ itemData }) => {
                 >
                   <Grid container>
                     <div className="action-flex flex-container">
-                      <FaShareAlt style={{marginRight:"0.25em"}} color="#122a32" />
+                      <FaShareAlt
+                        style={{ marginRight: "0.25em" }}
+                        color="#122a32"
+                      />
                       <Typography sx={{ fontSize: "0.75rem" }}>
                         share
                       </Typography>
                     </div>
                     <div className="action-flex flex-container">
-                      <FaSave style={{marginRight:"0.25em"}} color="#122a32" />
-                      <Typography sx={{  fontSize: "0.75rem" }}>
-                        save
-                      </Typography>
+                      <FaSave
+                        style={{ marginRight: "0.25em" }}
+                        color="#122a32"
+                      />
+                      <Typography sx={{ fontSize: "0.75rem" }}>save</Typography>
                     </div>
                   </Grid>
                 </Popover>

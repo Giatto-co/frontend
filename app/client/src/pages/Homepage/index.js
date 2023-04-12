@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { Slide, toast } from "react-toastify";
+// import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import { Slide, toast } from "react-toastify";
 import DefaultLayout from "../../components/shared/Layouts/Defaultlayout";
-import BannerCategoryLinks from "../../components/homeComponents/bannerCategoryLinks";
-import imag from "../../assets/headdsss 1.png";
-import RecommendedCategory from "../../components/homeComponents/recommendedCategory";
-import TrendyCollections from "../../components/homeComponents/trendyCollections";
-import PremiumSection from "../../components/homeComponents/premiumSection";
-import CalendarSection from "../../components/homeComponents/calendarSection";
-import CommunitySection from "../../components/homeComponents/communitySection";
+import BannerCategoryLinks from "../../components/HomeComponents/bannerCategoryLinks";
+import RecommendedCategory from "../../components/HomeComponents/recommendedCategory";
+import PremiumSection from "../../components/HomeComponents/premiumSection";
+import CalendarSection from "../../components/HomeComponents/calendarSection";
+import CommunitySection from "../../components/HomeComponents/communitySection";
 import DynamicSearch from "../../components/shared/Searchbox/dynamicSearchbox";
 import BasicSearch from "../../components/shared/Searchbox/basicSearch";
-import { categories } from "../../data/banner-img";
+import CollectionsSection from "../../components/HomeComponents/collectionsSection";
+import { bannerCategories } from "../../data/bannerCategories";
+import { trendyCollections } from "../../data/trendyCollections";
 
 const Homepage = () => {
   // const [state, setState] = useState({
@@ -57,6 +58,12 @@ const Homepage = () => {
   //     });
   // };
 
+  const navigate = useNavigate();
+
+  const goToAllCollections = () => {
+    navigate("/collections");
+  };
+
   return (
     <DefaultLayout>
       <div className="homepage">
@@ -94,7 +101,7 @@ const Homepage = () => {
             <BasicSearch searchTitle={"photo"} />
           </div>
           <div className="banner-flex-2 flex-container">
-            {categories.map((val) => {
+            {bannerCategories.map((val) => {
               return (
                 <BannerCategoryLinks
                   key={val.id}
@@ -113,7 +120,12 @@ const Homepage = () => {
         </div>
 
         <RecommendedCategory />
-        <TrendyCollections />
+        <CollectionsSection
+          headerText="Trendy collections to boost your ideas"
+          paraText="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+          collData={trendyCollections}
+          onClick={goToAllCollections}
+        />
         <PremiumSection />
       </div>
       <CalendarSection />

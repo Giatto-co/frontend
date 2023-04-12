@@ -27,8 +27,8 @@ const Navbar = () => {
             {user && (
               <>
                 <div className="links">
-                  <Link to="#">New Collections</Link>
-                  <Link to="#">Categories</Link>
+                  <Link to="/collections">New Collections</Link>
+                  <Link to="/categories">Categories</Link>
                   <Link to="#">Become a creator</Link>
                 </div>
                 <div className="user-info--nav">
@@ -47,8 +47,8 @@ const Navbar = () => {
             {!user && (
               <>
                 <div className="links">
-                  <Link to="#">New Collections</Link>
-                  <Link to="#">Categories</Link>
+                  <Link to="/collections">New Collections</Link>
+                  <Link to="/categories">Categories</Link>
                   <Link to="#">Become a creator</Link>
                 </div>
 

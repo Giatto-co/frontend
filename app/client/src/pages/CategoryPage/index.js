@@ -1,7 +1,7 @@
 import { useMatch } from "react-router-dom";
 import SideBarLayout from "../../components/shared/Layouts/SidebarLayout";
 
-const CategoryPage = ({pageTitle}) => {
+const CategoryPage = () => {
   const match = useMatch("/category/:name");
   const cName = match ? match.params.name : "";
 

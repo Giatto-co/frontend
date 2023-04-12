@@ -8,6 +8,9 @@ import SocialsSignup from "./pages/Auth/Signup/socials-signup";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import Homepage from "./pages/Homepage";
 import CategoryPage from "./pages/CategoryPage";
+import CollectionsPage from "./pages/CollectionsPage/index";
+import Collection from "./components/CollectionsComponents";
+import DiscoverCollection from "./pages/CollectionsPage/discoverCollection";
 
 function App() {
   const { user } = useAuthContext();
@@ -36,6 +39,18 @@ function App() {
           <Route
             path="/category/:name"
             element={<CategoryPage />}
+          />
+          <Route
+            path="/collections"
+            element={<CollectionsPage />}
+          />
+          <Route
+            path="/:name-collections"
+            element={<Collection />}
+          />
+          <Route
+            path="/:name-collections/:id"
+            element={<DiscoverCollection />}
           />
         </Routes>
       </BrowserRouter>
