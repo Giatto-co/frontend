@@ -4,7 +4,11 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { FaShareAlt, FaSave } from "react-icons/fa";
 import { Grid, Popover, Typography } from "@mui/material";
 
-const MasonryImageList = ({ collData, collName }) => {
+const MasonryImageList = ({ collData }) => {
+  const [state, setState] = useState({
+    images: collData,
+  });
+  const { images } = state;
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
 
@@ -26,7 +30,9 @@ const MasonryImageList = ({ collData, collName }) => {
             key={i}
             className="zoom-hover"
             onClick={() =>
-              navigate(`/${img.title.toLowerCase()}-collections/${img.total}`)
+              navigate(`/${img.title.toLowerCase()}-collections/${img.total}`, {
+                state: { images },
+              })
             }
           >
             <div className="image-list">

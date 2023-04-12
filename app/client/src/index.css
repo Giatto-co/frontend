@@ -1141,11 +1141,11 @@ input:-internal-autofill-selected {
 .discoverPage-banner {
   /* height: 240px; */
   background: linear-gradient(
-    0deg,
-    rgba(245, 245, 245, 0.75),
-    rgba(245, 245, 245, 0.75)
-  ),
-  url("./assets/vec5.jpeg");
+      0deg,
+      rgba(245, 245, 245, 0.75),
+      rgba(245, 245, 245, 0.75)
+    ),
+    url("./assets/vec5.jpeg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 560px 300px;
@@ -1185,6 +1185,47 @@ input:-internal-autofill-selected {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--neutral);
+}
+
+.discover-overlay-image {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: auto;
+}
+
+#thumbnail-container {
+  /* width: max-content;
+  height: max-content; */
+  margin: 1.5em 0.5em 0;
+  /* position: relative; */
+}
+
+#thumbnail {
+  position: absolute;
+  width: 405px;
+  height: 345px;
+  top: 50;
+  left: 50;
+  border-radius: 15px;
+  background-color: rgb(3, 3, 44, 0.9);
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+#thumbnail p {
+  color: var(--neutral);
+}
+
+.discover-overlay-image img {
+  border-radius: 15px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+#thumbnail {
+  opacity: 0.5;
+  z-index: 9;
 }
 
 /* footer */

@@ -1,11 +1,16 @@
-import { Link, useMatch } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation, useMatch } from "react-router-dom";
 import AlternativeLayout from "../../components/shared/Layouts/AlternativeLayout";
 import { BsSave, BsShare } from "react-icons/bs";
 import { Button, ButtonGroup } from "@mui/material";
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import IconButton from '@mui/material/IconButton';
+import Box from '@mui/material/Box';
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
+import SaveIcon from '@mui/icons-material/Save';
+import PrintIcon from '@mui/icons-material/Print';
+import ShareIcon from '@mui/icons-material/Share';
+import pic from "../../assets/3d11.jpeg";
 
 const itemData = [
   {
@@ -70,18 +75,19 @@ const itemData = [
   },
 ];
 
-function srcset(image, width, height, rows = 1, cols = 1) {
-    return {
-      src: `${image}?w=${width * cols}&h=${height * rows}&fit=crop&auto=format`,
-      srcSet: `${image}?w=${width * cols}&h=${
-        height * rows
-      }&fit=crop&auto=format&dpr=2 2x`,
-    };
-  }
+const actions = [
+  { icon: <SaveIcon />, name: "Save" },
+  { icon: <PrintIcon />, name: "Print" },
+  { icon: <ShareIcon />, name: "Share" },
+];
 
 const DiscoverCollection = () => {
   const match = useMatch("/:name-collections/:id");
   const name = match ? match.params.name : "";
+
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
+  console.log("Location:::", location);
 
   return (
     <AlternativeLayout>
@@ -116,48 +122,44 @@ const DiscoverCollection = () => {
           </div>
         </div>
         <div className="discover-gallery">
-        <ImageList
-      sx={{
-        width: 500,
-        height: 450,
-        // Promote the list into its own layer in Chrome. This costs memory, but helps keeping high FPS.
-        transform: 'translateZ(0)',
-      }}
-      rowHeight={200}
-      gap={1}
-    >
-      {itemData.map((item) => {
-        const cols = item.featured ? 2 : 1;
-        const rows = item.featured ? 2 : 1;
-
-        return (
-          <ImageListItem key={item.img} cols={cols} rows={rows}>
-            <img
-              {...srcset(item.img, 250, 200, rows, cols)}
-              alt={item.title}
-              loading="lazy"
-            />
-            <ImageListItemBar
-              sx={{
-                background:
-                  'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
-                  'rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
-              }}
-              title={item.title}
-              position="top"
-              actionIcon={
-                <IconButton
-                  sx={{ color: 'white' }}
-                  aria-label={`star ${item.title}`}
-                >
-                </IconButton>
-              }
-              actionPosition="left"
-            />
-          </ImageListItem>
-        );
-      })}
-    </ImageList>
+          <div className="discover-overlay-image">
+            {/* {itemData.map((obj) => {
+              return ( */}
+                <div id="thumbnail-container">
+                  <div id="thumbnail">
+                    {/* <p>{obj.author}</p> */}
+                    <p>sutra khan</p>
+                      <Box
+                        sx={{
+                          height: 320,
+                          transform: "translateZ(0px)",
+                          flexGrow: 1,
+                        }}
+                      >
+                        <SpeedDial
+                          ariaLabel="SpeedDial controlled open example"
+                          sx={{ position: "absolute", bottom: 26, right: 16 }}
+                          icon={<SpeedDialIcon />}
+                          onClose={() => setOpen(false)}
+                          onOpen={() => setOpen(true)}
+                          open={open}
+                        >
+                          {actions.map((action) => (
+                            <SpeedDialAction
+                              key={action.name}
+                              icon={action.icon}
+                              tooltipTitle={action.name}
+                              onClick={() => setOpen(false)}
+                            />
+                          ))}
+                        </SpeedDial>
+                      </Box>
+                  </div>
+                  <img src={pic} alt="" width="420px" height="360px" />
+                </div>
+              {/* );
+            })} */}
+          </div>
         </div>
       </div>
     </AlternativeLayout>
