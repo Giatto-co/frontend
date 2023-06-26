@@ -5,7 +5,7 @@ import { vectorCollections } from "../../data/vectorCollections";
 import { mockupCollections } from "../../data/mockupCollections";
 import { illustrationsCollections } from "../../data/illustrations";
 
-const Collection = () => {
+const ExploreCollection = () => {
   const match = useMatch("/:name-collections");
   const name = match ? match.params.name : "";
 
@@ -27,4 +27,4 @@ const Collection = () => {
   );
 };
 
-export default Collection;
+export default ExploreCollection;

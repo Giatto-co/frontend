@@ -9,8 +9,8 @@ import ForgotPassword from "./pages/Auth/ForgotPassword";
 import Homepage from "./pages/Homepage";
 import CategoryPage from "./pages/CategoryPage";
 import CollectionsPage from "./pages/CollectionsPage/index";
-import Collection from "./components/CollectionsComponents";
-import DiscoverCollection from "./pages/CollectionsPage/discoverCollection";
+import Collection from "./pages/CollectionsPage/collection";
+import ExploreCollection from "./components/CollectionsComponents/ExploreCollection";
 
 function App() {
   const { user } = useAuthContext();
@@ -46,11 +46,11 @@ function App() {
           />
           <Route
             path="/:name-collections"
-            element={<Collection />}
+            element={<ExploreCollection />}
           />
           <Route
             path="/:name-collections/:id"
-            element={<DiscoverCollection />}
+            element={<Collection />}
           />
         </Routes>
       </BrowserRouter>

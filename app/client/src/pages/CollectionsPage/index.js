@@ -47,7 +47,7 @@ const CollectionsPage = () => {
 
         <div className="collections-gallery">
           <CollectionsSection
-            headerText="Asset collections created by professionals"
+            headerText="Illustration collections created by professionals"
             collData={illustrationsCollections}
             // name="illustration"
             onClick={() => {

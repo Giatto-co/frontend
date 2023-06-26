@@ -5,7 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useState } from "react";
-import { fontSize } from "@mui/system";
+import MainSearch from "../Searchbox/mainSearch";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -53,6 +53,7 @@ export default function MultipleSelectPlaceholder() {
   };
 
   return (
+    <>
     <div>
       <FormControl
         sx={{
@@ -100,5 +101,7 @@ export default function MultipleSelectPlaceholder() {
         </Select>
       </FormControl>
     </div>
+    <MainSearch selectValue={itemName} />
+    </>
   );
 }

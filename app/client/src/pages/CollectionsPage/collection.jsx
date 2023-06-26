@@ -81,7 +81,7 @@ const actions = [
   { icon: <ShareIcon />, name: "Share" },
 ];
 
-const DiscoverCollection = () => {
+const Collection = () => {
   const match = useMatch("/:name-collections/:id");
   const name = match ? match.params.name : "";
 
@@ -166,4 +166,4 @@ const DiscoverCollection = () => {
   );
 };
 
-export default DiscoverCollection;
+export default Collection;
