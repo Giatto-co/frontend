@@ -11,6 +11,10 @@ import CategoryPage from "./pages/CategoryPage";
 import CollectionsPage from "./pages/CollectionsPage/index";
 import Collection from "./pages/CollectionsPage/collection";
 import ExploreCollection from "./components/CollectionsComponents/ExploreCollection";
+import BecomeACreator from "./pages/BecomeACreatorPage";
+import ContentPage from "./pages/ContentPage";
+import Pricing from "./pages/Pricing";
+import MenuCategory from "./pages/CategoryPage/menuCategory";
 
 function App() {
   const { user } = useAuthContext();
@@ -32,10 +36,14 @@ function App() {
             element={!user ? <SocialsSignup /> : <Navigate to="/home" />}
           />
           <Route path="/reset-password" element={!user && <ForgotPassword />} />
-          {/* <Route
-            path="/category/:name"
-            element={user ? <CategoryPage /> : <Navigate to="/login" />}
-          /> */}
+          <Route
+            path="/categories"
+            element={<CategoryPage />}
+          />
+           <Route
+            path="/:name"
+            element={<MenuCategory />}
+          />
           <Route
             path="/category/:name"
             element={<CategoryPage />}
@@ -51,6 +59,18 @@ function App() {
           <Route
             path="/:name-collections/:id"
             element={<Collection />}
+          />
+          <Route
+            path="/become-a-creator"
+            element={<BecomeACreator />}
+          />
+           <Route
+            path="/content"
+            element={<ContentPage />}
+          />
+           <Route
+            path="/pricing"
+            element={<Pricing />}
           />
         </Routes>
       </BrowserRouter>

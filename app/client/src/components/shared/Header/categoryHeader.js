@@ -13,12 +13,12 @@ const CategoryHeader = () => {
           <CategoryNavbar />
           <ul>
             <li>
-              <Link to="#" activeclassname="active">
+              <Link to="/content" activeclassname="active">
                 Sell content
               </Link>
             </li>
             <li className="category--pricing">
-              <Link to="#" activeclassname="active">
+              <Link to="/pricing" activeclassname="active">
                 Pricing
               </Link>
             </li>

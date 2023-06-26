@@ -2,7 +2,6 @@ import MasonryImageList from "../shared/ImageLists/masonryImageList";
 import { BsArrowRight } from "react-icons/bs";
 
 const CollectionsSection = ({ headerText, paraText, collData, onClick }) => {
-
   return (
     <div className="trendy-section">
       <div>
@@ -11,13 +10,12 @@ const CollectionsSection = ({ headerText, paraText, collData, onClick }) => {
           <p>{paraText}</p>
         </div>
 
-        <div className="explore-collections-btn">
+        <div
+          className="explore-collections-btn cursor-pointer"
+          onClick={onClick}
+        >
           <span>Explore</span>{" "}
-          <BsArrowRight
-            className="explore-arrow cursor-pointer"
-            size={20}
-            onClick={onClick}
-          />
+          <BsArrowRight className="explore-arrow" size={20} />
         </div>
 
         <div className="trendy-gallery cursor-pointer">

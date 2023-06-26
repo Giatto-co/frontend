@@ -4,7 +4,7 @@ import { useLogout } from "../../../hooks/useLogout";
 import { BsStarFill } from "react-icons/bs";
 import HamburgerMenu from "./hamburgerMenu";
 import { useState } from "react";
-import Avatar from "@mui/material/Avatar";
+// import Avatar from "@mui/material/Avatar";
 
 const Navbar = () => {
   const { logout } = useLogout();
@@ -29,11 +29,11 @@ const Navbar = () => {
                 <div className="links">
                   <Link to="/collections">New Collections</Link>
                   <Link to="/categories">Categories</Link>
-                  <Link to="#">Become a creator</Link>
+                  <Link to="/become-a-creator">Become a creator</Link>
                 </div>
                 <div className="user-info--nav">
-                  <Link to="#">Sell content</Link>
-                  <Link to="#">Pricing</Link>
+                  <Link to="/content">Sell content</Link>
+                  <Link to="/pricing">Pricing</Link>
                   <span className="giatto-user">
                     {user.user.username.split(" ")[0][0].toUpperCase()}
                     {user.user.username.split(" ")[1][0].toUpperCase()}
@@ -49,7 +49,7 @@ const Navbar = () => {
                 <div className="links">
                   <Link to="/collections">New Collections</Link>
                   <Link to="/categories">Categories</Link>
-                  <Link to="#">Become a creator</Link>
+                  <Link to="/become-a-creator">Become a creator</Link>
                 </div>
 
                 <div className="links">
@@ -87,17 +87,17 @@ const Navbar = () => {
               >
                 <ul>
                   <li>
-                    <Link to="#" className="mobile-nav--links">
+                    <Link to="/collections" className="mobile-nav--links">
                       New Collections
                     </Link>
                   </li>
                   <li>
-                    <Link to="#" className="mobile-nav--links">
+                    <Link to="/categories" className="mobile-nav--links">
                       Categories
                     </Link>
                   </li>
                   <li>
-                    <Link to="#" className="mobile-nav--links">
+                    <Link to="/become-a-creator" className="mobile-nav--links">
                       Become a creator
                     </Link>
                   </li>
@@ -132,17 +132,17 @@ const Navbar = () => {
               >
                 <ul>
                   <li>
-                    <Link to="#" className="mobile-nav--links">
+                    <Link to="/collections" className="mobile-nav--links">
                       New Collections
                     </Link>
                   </li>
                   <li>
-                    <Link to="#" className="mobile-nav--links">
+                    <Link to="/categories" className="mobile-nav--links">
                       Categories
                     </Link>
                   </li>
                   <li>
-                    <Link to="#" className="mobile-nav--links">
+                    <Link to="/become-a-creator" className="mobile-nav--links">
                       Become a creator
                     </Link>
                   </li>
